@@ -1,4 +1,3 @@
-# explainable-amr-prediction
 # Explainable Machine Learning for Antimicrobial Resistance (AMR) Prediction
 
 An end-to-end clinical machine learning framework to predict Ciprofloxacin non-susceptibility in *Escherichia coli* isolates using laboratory phenotype metadata from the multi-center DRIAMS benchmark dataset.
