@@ -25,12 +25,20 @@ The original DRIAMS repository contains over 300,000 mass spectra and microbiolo
 - **Class Imbalance Calibration:** Utilized cost-sensitive `scale_pos_weight` within an XGBoost Classifier to handle the ~30% positive resistance prevalence.
 - **Explainability Layer:** Computed TreeSHAP values to uncover non-linear clinical and phenotypic feature attributions.
 
-## Performance
-- **ROC-AUC:** 0.7974
-- **PR-AUC:** 0.6618
-- **Overall Accuracy:** 0.83 (Macro F1: 0.78)
-- **Susceptible (S):** Precision: 0.85 | Recall: 0.93 | F1: 0.88
-- **Resistant (R):** Precision: 0.77 | Recall: 0.59 | F1: 0.67
+## Performance Metrics
+
+Evaluated on an independent, held-out clinical test set of **2,041 isolates**:
+
+| Class | Precision | Recall | F1-Score | Support |
+| :--- | :---: | :---: | :---: | :---: |
+| **Susceptible (S)** | 0.85 | 0.93 | 0.88 | 1,439 |
+| **Resistant (R)** | 0.77 | 0.59 | 0.67 | 602 |
+| **Overall Accuracy** | — | — | **0.83** | **2,041** |
+| **Macro Average** | 0.81 | 0.76 | 0.78 | 2,041 |
+| **Weighted Average** | 0.82 | 0.83 | 0.82 | 2,041 |
+
+* **ROC-AUC Score:** **0.7974**
+* **PR-AUC Score:** **0.6618**
 
 ## Interpretability & Phenotypic Insights
 ![SHAP Attribution](assets/shap_driams_ciprofloxacin.png)
