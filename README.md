@@ -6,6 +6,20 @@ An end-to-end clinical machine learning framework to predict Ciprofloxacin non-s
 ## Clinical Motivation
 Antimicrobial resistance (AMR), particularly fluoroquinolone resistance in Gram-negative pathogens, poses a major challenge to empirical pediatric antimicrobial therapy. This pipeline leverages clinical and microbiological phenotypes to predict susceptibility patterns, utilizing Explainable AI (SHAP) to interpret biological risk drivers.
 
+## Dataset Description & Source
+
+* **Dataset Name:** DRIAMS (Database of Resistance Information on Antimicrobials and MALDI-TOF Mass Spectra)
+* **Sub-cohort Utilized:** `DRIAMS-A` (Clinical Diagnostic Laboratory, University Hospital Basel, Switzerland)
+* **Source Platform:** [Kaggle Dataset (`drscarlat/driams`)](https://www.kaggle.com/datasets/drscarlat/driams) / [Dryad Digital Repository (DOI: 10.5061/dryad.bzkh1899q)](https://datadryad.org/dataset/doi:10.5061/dryad.bzkh1899q)
+* **Primary Reference:** Weis, C., Cuénod, A., Rieck, B., et al. *Direct antimicrobial resistance prediction from clinical MALDI-TOF mass spectra using machine learning.* **Nature Medicine** 28, 164–174 (2022). https://doi.org/10.1038/s41591-021-01619-9
+
+### Data Structure & Cohort Extraction
+The original DRIAMS repository contains over 300,000 mass spectra and microbiological profiles across 804 pathogens tested against 52 antimicrobials. For this predictive benchmark:
+* **Target Organism:** *Escherichia coli* (`species` containing `coli`).
+* **Target Antimicrobial:** **Ciprofloxacin** (Fluoroquinolone class; binary classification where `Resistant (R)` and `Intermediate (I)` are labeled as `1`, and `Susceptible (S)` is labeled as `0`).
+* **Analyzed Cohort:** Consolidated longitudinal metadata from `DRIAMS-A/id/` (2015–2018), yielding **10,204 validated *E. coli* isolate records**.
+* **Target Balance:** 70.52% Susceptible (`0`), 29.48% Non-Susceptible (`1`).
+
 ## Pipeline Architecture & Methodological Rigor
 - **Cohort Aggregation:** Ingested and combined multi-year clinical metadata tables (2015–2018) from DRIAMS-A, compiling a cohort of **10,204 validated *E. coli* isolates**.
 - **Leakage Prevention:** Purged 41 co-tested antibiotic outcome columns and sample tracking IDs to prevent artificial shortcut learning.
